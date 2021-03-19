@@ -28,7 +28,6 @@ hs_err_pid*
 .project
 .settings/
 bin/*
-resources/db/*
 *.mv.db
 *.trace.db
 target/*
