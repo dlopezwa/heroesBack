@@ -1,4 +1,4 @@
-INSERT INTO heroe (firstname, lastName, heroName, heroPower)
+INSERT INTO heroe (first_name, last_name, hero_name, hero_power)
 VALUES 
 ('Carol Susan Jane','Danvers','Capitana Marvel','Brilla y vuela'),
 ('Steve','Rogers','Capitán América','Fuerza aumentada y escudo molón'),

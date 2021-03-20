@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.form</groupId>
 	<artifactId>heroesBack</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>heroesBack</name>
 	<description>Demo project Backend Heroes</description>
 	<properties>
@@ -43,6 +43,11 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-rest-hal-explorer</artifactId>
+    		<version>3.4.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
