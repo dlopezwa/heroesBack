@@ -1,4 +1,4 @@
-package com.form.heroesBack.heroe;
+package com.form.heroesBack.heroe.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
