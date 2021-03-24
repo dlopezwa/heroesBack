@@ -15,3 +15,9 @@ VALUES
 ('Traer un café para el Doctor Strange'),
 ('Estrenar serie en Netflix'),
 ('Ir al cine a ver DeadPool');
+
+INSERT INTO heroe_mission (heroeid, missionid)
+VALUES
+(1,1),
+(1,2),
+(2,4);
