@@ -1,7 +1,6 @@
 package com.form.heroesBack.heroe.entity;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,4 +33,6 @@ public class Heroe {
 
     @ManyToMany(mappedBy = "heroes")
     private List<Mission> missions;
+
+
 }
