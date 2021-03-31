@@ -1,9 +1,9 @@
-package com.form.heroesBack.heroe.entity.projections;
-import com.form.heroesBack.heroe.entity.Heroe;
+package com.form.heroesBack.hero.entity.projections;
+import com.form.heroesBack.hero.entity.Hero;
 
 import org.springframework.data.rest.core.config.Projection;
 
-@Projection(name = "heroeETO", types = { Heroe.class })
+@Projection(name = "heroeETO", types = { Hero.class })
 public interface HeroETO {
     Long getId();
     String getFirstName();

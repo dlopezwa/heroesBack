@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
 
-import com.form.heroesBack.heroe.entity.Heroe;
+import com.form.heroesBack.hero.entity.Hero;
+
+import javax.persistence.JoinColumn;
 
 import lombok.Data;
 
@@ -28,9 +29,9 @@ public class Mission {
 
     @ManyToMany()
     @JoinTable(
-        name = "heroe_mission",
+        name = "hero_mission",
         joinColumns = @JoinColumn(name = "missionid", referencedColumnName = "id", nullable = false),
-        inverseJoinColumns = @JoinColumn(name="heroeid", referencedColumnName = "id", nullable = false)
+        inverseJoinColumns = @JoinColumn(name="heroid", referencedColumnName = "id", nullable = false)
     )
-    private List<Heroe> heroes;
+    private List<Hero> heroes;
 }

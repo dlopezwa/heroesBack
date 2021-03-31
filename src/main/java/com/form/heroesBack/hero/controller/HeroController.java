@@ -1,9 +1,9 @@
-package com.form.heroesBack.heroe.controller;
+package com.form.heroesBack.hero.controller;
 
 import javax.websocket.server.PathParam;
 
-import com.form.heroesBack.heroe.entity.Heroe;
-import com.form.heroesBack.heroe.repository.HeroeRepository;
+import com.form.heroesBack.hero.entity.Hero;
+import com.form.heroesBack.hero.repository.HeroRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
@@ -15,25 +15,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RepositoryRestController
 @RequestMapping("/heroes")
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
-public class HeroeController {
+public class HeroController {
 
     @Autowired
-    private HeroeRepository heroeRepository;
+    private HeroRepository heroRepository;
 
 
     @GetMapping(value = "/custom/search/{id}")
-    public Heroe getHeroeUpperCase(@PathParam("id") long id) {
+    public Hero getHeroUpperCase(@PathParam("id") long id) {
         
-        Heroe heroe = heroeRepository.findById(id).orElse(null);
+        Hero hero = heroRepository.findById(id).orElse(null);
 
         // Retornamos sus campos en MAYUS.
         // El objetivo de este ejercicio es simular un servicio en el que debemos procesar su salida o incluso operar con otros repositorios.
-        if(heroe != null) {
-            heroe.setFirstName(heroe.getFirstName().toUpperCase());
-            heroe.setLastName(heroe.getLastName().toUpperCase());
-            heroe.setHeroPower(heroe.getHeroPower().toUpperCase());
-            heroe.setHeroName(heroe.getHeroName().toUpperCase());
+        if(hero != null) {
+            hero.setFirstName(hero.getFirstName().toUpperCase());
+            hero.setLastName(hero.getLastName().toUpperCase());
+            hero.setHeroPower(hero.getHeroPower().toUpperCase());
+            hero.setHeroName(hero.getHeroName().toUpperCase());
         }
-        return heroe;
+        return hero;
     }
 }

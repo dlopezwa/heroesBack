@@ -1,4 +1,4 @@
-package com.form.heroesBack.heroe.entity;
+package com.form.heroesBack.hero.entity;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import com.form.heroesBack.mission.entity.Mission;
 import lombok.Data;
 @Data
 @Entity
-public class Heroe {
+public class Hero {
 
     
     @Id
