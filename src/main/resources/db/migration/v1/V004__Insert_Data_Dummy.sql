@@ -14,7 +14,12 @@ VALUES
 ('Detener a Ultrón'),
 ('Traer un café para el Doctor Strange'),
 ('Estrenar serie en Netflix'),
-('Ir al cine a ver DeadPool');
+('Ir al cine a ver DeadPool'),
+('Salvar el mundo'),
+('Tomar un brunch'),
+('Hacerse doble agente de Hydra'),
+('Crear un meme gracioso en un ascensor'),
+('Manifestarse a favor de alguna minoría');
 
 INSERT INTO heroe_mission (heroeid, missionid)
 VALUES

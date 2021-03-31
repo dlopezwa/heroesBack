@@ -2,7 +2,6 @@ package com.form.heroesBack.mission.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +21,7 @@ public class Mission {
     
     @Id
     @GeneratedValue
-    private long id;
+    private long Id;
     
     @Column(nullable=false)
     private String instructions;

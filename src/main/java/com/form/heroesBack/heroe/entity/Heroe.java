@@ -15,9 +15,10 @@ import lombok.Data;
 @Entity
 public class Heroe {
 
+    
     @Id
     @GeneratedValue
-    private Long id;
+    private Long Id;
 
     @Column(nullable = false)
     private String firstName;
