@@ -15,10 +15,9 @@ import lombok.Data;
 @Entity
 public class Hero {
 
-    
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String firstName;
@@ -34,6 +33,5 @@ public class Hero {
 
     @ManyToMany(mappedBy = "heroes")
     private List<Mission> missions;
-
 
 }

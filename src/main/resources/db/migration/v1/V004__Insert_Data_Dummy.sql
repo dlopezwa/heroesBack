@@ -1,3 +1,5 @@
+CREATE SEQUENCE HIBERNATE_SEQUENCE START WITH 100 INCREMENT BY 1;
+
 INSERT INTO hero (first_name, last_name, hero_name, hero_power)
 VALUES 
 ('Carol Susan Jane','Danvers','Capitana Marvel','Brilla y vuela'),

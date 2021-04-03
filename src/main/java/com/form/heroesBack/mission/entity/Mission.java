@@ -22,7 +22,7 @@ public class Mission {
     
     @Id
     @GeneratedValue
-    private long Id;
+    private long id;
     
     @Column(nullable=false)
     private String instructions;
