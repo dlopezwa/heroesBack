@@ -7,11 +7,20 @@ import com.form.heroesBack.hero.repository.HeroRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RepositoryRestController
 @RequestMapping("/heroes")
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
@@ -22,8 +31,8 @@ public class HeroController {
 
 
     @GetMapping(value = "/custom/search/{id}")
-    public Hero getHeroUpperCase(@PathParam("id") long id) {
-        
+    public  @ResponseBody ResponseEntity<EntityModel<Hero>> getHeroUpperCase(@PathVariable ("id") long id) {
+        log.info("Inicio");
         Hero hero = heroRepository.findById(id).orElse(null);
 
         // Retornamos sus campos en MAYUS.
@@ -33,7 +42,16 @@ public class HeroController {
             hero.setLastName(hero.getLastName().toUpperCase());
             hero.setHeroPower(hero.getHeroPower().toUpperCase());
             hero.setHeroName(hero.getHeroName().toUpperCase());
+            hero.setMissions(hero.getMissions());
         }
-        return hero;
-    }
+
+        // Convertimos el objeto a HATEOAS.
+        EntityModel<Hero> entityModel = EntityModel.of(hero);
+        entityModel.add(linkTo(methodOn(HeroController.class).getHeroUpperCase(id)).withSelfRel()); 
+        entityModel.add(linkTo(HeroController.class).slash(hero.getId()).withSelfRel());
+        log.info("Fin");
+        return ResponseEntity.ok(entityModel);
+       // inkTo(CustomerController.class).slash(customer.getCustomerId()).withSelfRel();
 }
+
+    }

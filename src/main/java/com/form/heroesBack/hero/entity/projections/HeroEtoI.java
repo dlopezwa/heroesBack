@@ -3,8 +3,8 @@ import com.form.heroesBack.hero.entity.Hero;
 
 import org.springframework.data.rest.core.config.Projection;
 
-@Projection(name = "heroeETO", types = { Hero.class })
-public interface HeroETO {
+@Projection(name = "heroETO", types = { Hero.class })
+public interface HeroEtoI {
     Long getId();
     String getFirstName();
     String getLastName();
