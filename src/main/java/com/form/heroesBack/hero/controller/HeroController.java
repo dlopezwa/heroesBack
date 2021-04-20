@@ -29,29 +29,25 @@ public class HeroController {
     @Autowired
     private HeroRepository heroRepository;
 
-
     @GetMapping(value = "/custom/search/{id}")
-    public  @ResponseBody ResponseEntity<EntityModel<Hero>> getHeroUpperCase(@PathVariable ("id") long id) {
+    public @ResponseBody ResponseEntity<EntityModel<Hero>> getHeroUpperCase(@PathVariable("id") long id) {
         log.info("Inicio");
         Hero hero = heroRepository.findById(id).orElse(null);
 
         // Retornamos sus campos en MAYUS.
-        // El objetivo de este ejercicio es simular un servicio en el que debemos procesar su salida o incluso operar con otros repositorios.
-        if(hero != null) {
+        // El objetivo de este ejercicio es simular un servicio en el que debemos
+        // procesar su salida o incluso operar con otros repositorios.
+        if (hero != null) {
             hero.setFirstName(hero.getFirstName().toUpperCase());
             hero.setLastName(hero.getLastName().toUpperCase());
             hero.setHeroPower(hero.getHeroPower().toUpperCase());
             hero.setHeroName(hero.getHeroName().toUpperCase());
-            hero.setMissions(hero.getMissions());
         }
 
         // Convertimos el objeto a HATEOAS.
         EntityModel<Hero> entityModel = EntityModel.of(hero);
-        entityModel.add(linkTo(methodOn(HeroController.class).getHeroUpperCase(id)).withSelfRel()); 
-        entityModel.add(linkTo(HeroController.class).slash(hero.getId()).withSelfRel());
+        entityModel.add(linkTo(methodOn(HeroController.class).getHeroUpperCase(id)).withSelfRel());
         log.info("Fin");
         return ResponseEntity.ok(entityModel);
-       // inkTo(CustomerController.class).slash(customer.getCustomerId()).withSelfRel();
-}
-
     }
+}
