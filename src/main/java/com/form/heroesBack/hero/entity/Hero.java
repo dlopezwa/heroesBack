@@ -10,7 +10,10 @@ import javax.persistence.ManyToMany;
 
 import com.form.heroesBack.mission.entity.Mission;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
+
 @Data
 @Entity
 public class Hero {
@@ -19,15 +22,19 @@ public class Hero {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     @Column(nullable = false)
     private String firstName;
 
+    @NotNull
     @Column(nullable = false)
     private String lastName;
 
+    @NotNull
     @Column(nullable = false)
     private String heroName;
 
+    @NotNull
     @Column(nullable = false)
     private String heroPower;
 
