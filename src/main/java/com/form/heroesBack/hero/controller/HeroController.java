@@ -1,11 +1,14 @@
 package com.form.heroesBack.hero.controller;
 
 import com.form.heroesBack.hero.entity.Hero;
+import com.form.heroesBack.hero.entity.interfaces.HeroWeaponDtoI;
+import com.form.heroesBack.hero.entity.to.HeroWeaponDto;
 import com.form.heroesBack.hero.repository.HeroRepository;
 import com.form.heroesBack.mission.controller.MissionController;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
 import lombok.extern.slf4j.Slf4j;
@@ -50,4 +57,22 @@ public class HeroController {
         log.info("Fin");
         return ResponseEntity.ok(entityModel);
     }
+
+    @GetMapping(value = "/custom/search/heroweapon")
+    public @ResponseBody ResponseEntity<CollectionModel<HeroWeaponDto>> findHeroWeapon() {
+        List<HeroWeaponDtoI> listHeroWeaponI = heroRepository.findHeroWeapon();
+        
+        // A futuro modificar con Orika.
+        List<HeroWeaponDto> listHeroWeapon = new ArrayList<>();
+        for (HeroWeaponDtoI heroWeaponDtoI : listHeroWeaponI) {
+            HeroWeaponDto heroWeaponDto = new HeroWeaponDto();
+            heroWeaponDto.setHero(heroWeaponDtoI.getHero());
+            heroWeaponDto.setWeapon(heroWeaponDtoI.getWeapon());
+
+            listHeroWeapon.add(heroWeaponDto);
+        }
+
+        return ResponseEntity.ok(CollectionModel.of(listHeroWeapon));
+    }
 }
+
