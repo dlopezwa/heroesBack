@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.form</groupId>
 	<artifactId>heroesBack</artifactId>
-	<version>0.0.15-SNAPSHOT</version>
+	<version>0.0.16-SNAPSHOT</version>
 	<name>heroesBack</name>
 	<description>Demo project Backend Heroes</description>
 	<properties>
